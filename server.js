@@ -4,7 +4,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://snazzy-cassata-f779f1.netlify.app/',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 
 app.post('/api/appointment', async (req, res) => {
