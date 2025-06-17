@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request an Appointment</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow">
+    <h1 class="text-2xl font-bold mb-6">Request an Appointment</h1>
+    <form id="appointmentForm" class="space-y-4">
+      <label class="block">Full Name
+        <input type="text" name="name" required class="w-full p-2 border rounded mt-1">
+      </label>
+      <label class="block">Contact Number
+        <input type="text" name="contact" required class="w-full p-2 border rounded mt-1">
+      </label>
+      <label class="block">Email Address
+        <input type="email" name="email" required class="w-full p-2 border rounded mt-1">
+      </label>
+      <label class="block">Home Address
+        <input type="text" name="address" class="w-full p-2 border rounded mt-1">
+      </label>
+      <label class="block">Preferred Date
+        <input type="date" name="date" required class="w-full p-2 border rounded mt-1">
+      </label>
+      <label class="block">Preferred Time
+        <select name="time" required class="w-full p-2 border rounded mt-1">
+          <option value="">Select Time</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Evening">Evening</option>
+          <option value="Evening">Online</option>
+        </select>
+      </label>
+      <label class="block">Appointment Type
+        <select name="type" required class="w-full p-2 border rounded mt-1">
+          <option value="">Select Appointment Type</option>
+          <option>Individual Income Tax</option>
+          <option>Business Tax and Accounting</option>
+          <option>Business Set Up and/or Restructure</option>
+          <option>Investment Property Consultation</option>
+          <option>General Consultation (Not listed above)</option>
+        </select>
+      </label>
+      <label class="block">Any question or concern that you would like accountant to know
+        <textarea name="message" class="w-full p-2 border rounded h-24 mt-1"></textarea>
+      </label>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Request</button>
+    </form>
+    <div id="responseMsg" class="mt-4 text-green-600 hidden">Your request has been submitted.</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('appointmentForm');
+      const responseMsg = document.getElementById('responseMsg');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await axios.post('http://localhost:3000/api/appointment', data);
+          if (res.status === 200) {
+            responseMsg.classList.remove('hidden');
+            form.reset();
+          }
+        } catch (err) {
+          alert('Failed to send your request. Please try again later.');
+          console.error(err);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
