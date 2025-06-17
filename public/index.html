@@ -65,7 +65,7 @@
         const data = Object.fromEntries(formData.entries());
 
         try {
-          const res = await axios.post('http://localhost:3000/api/appointment', data);
+          const res = await axios.post('https://appointment-v5lu.onrender.com', data);
           if (res.status === 200) {
             responseMsg.classList.remove('hidden');
             form.reset();
