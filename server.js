@@ -14,12 +14,11 @@ app.use(bodyParser.json());
 app.post('/api/appointment', async (req, res) => {
   const data = req.body;
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Or your provider's SMTP host
-    port: 465,
-    secure: true, // true for port 465, false for 587
+    service: 'gmail', // Or your provider's SMTP host
+    // secure: true, // true for port 465, false for 587
     auth: {
-      user: 'info@desireaccounting.com.au',
-      pass: 'mwxpvesxjnnspxas' // this must be the correct email password or SMTP/app password
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS // this must be the correct email password or SMTP/app password
   }
 });
 
@@ -62,8 +61,9 @@ Desire Accounting Associates`
   }
 });
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log('Server running on port ${PORT}');
 });
 
 const path = require('path');
