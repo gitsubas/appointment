@@ -65,15 +65,15 @@
         const data = Object.fromEntries(formData.entries());
 
         try {
-          const res = await axios.post('https://appointment-v5lu.onrender.com', data);
-          if (res.status === 200) {
-            responseMsg.classList.remove('hidden');
-            form.reset();
-          }
-        } catch (err) {
-          alert('Failed to send your request. Please try again later.');
-          console.error(err);
-        }
+  const res = await axios.post('https://appointment-v5lu.onrender.com/api/appointment', data);
+  if (res.status === 200) {
+    responseMsg.classList.remove('hidden');
+    form.reset();
+  }
+} catch (err) {
+  alert('Failed to send your request. Please try again later.');
+  console.error(err);
+}
       });
     });
   </script>
