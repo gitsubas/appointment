@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors({
-  origin: 'https://snazzy-cassata-f779f1.netlify.app/',
+  origin: 'https://snazzy-cassata-f779f1.netlify.app',
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
