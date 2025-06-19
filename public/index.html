@@ -8,9 +8,10 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 </head>
-<body class="bg-gray-100 p-6">
+<body class="bg-green-50 p-6">
   <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow">
-    <h1 class="text-2xl font-bold mb-6">Request an Appointment</h1>
+    <h1 class="text-3xl font-bold mb-2 text-center text-green-600">Desire Accounting Associates</h1>
+    <h2 class="text-xl font-semibold mb-6 text-center">Request an Appointment</h2>
     <form id="appointmentForm" class="space-y-4">
       <label class="block">Full Name
         <input type="text" name="name" required class="w-full p-2 border rounded mt-1">
@@ -49,7 +50,9 @@
       <label class="block">Any question or concern that you would like accountant to know
         <textarea name="message" class="w-full p-2 border rounded h-24 mt-1"></textarea>
       </label>
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Request</button>
+      <div class="text-center">
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Submit Request</button>
+      </div>
     </form>
     <div id="responseMsg" class="mt-4 text-green-600 hidden">Your request has been submitted.</div>
   </div>
