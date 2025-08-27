@@ -51,10 +51,10 @@
         <textarea name="message" class="w-full p-2 border rounded h-24 mt-1"></textarea>
       </label>
       <div class="text-center">
-        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Submit Request</button>
+        <button id="submitBtn" type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Submit Request</button>
       </div>
     </form>
-    <div id="responseMsg" class="mt-4 text-green-600 hidden">Your request has been submitted.</div>
+    <div id="responseMsg" class="mt-4 text-green-600 text-center bg-green-50 hidden">Your request has been submitted.</div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -62,9 +62,13 @@
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('appointmentForm');
       const responseMsg = document.getElementById('responseMsg');
+      const submitBtn = document.getElementById('submitBtn');
 
-      form.addEventListener('submit', async function (e) {
+      form.addEventListener('submitBtn', async function (e) {
         e.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Please wait...";
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
@@ -78,6 +82,9 @@
 } catch (err) {
   alert('Failed to send your request. Please try again later.');
   console.error(err);
+}finally{
+  submitBtn.disabled = false;
+  submitBtn.innerText = "Submit Request";
 }
       });
     });
