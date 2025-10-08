@@ -1,4 +1,10 @@
-require('dotenv').config();
+// Load environment variables from .env file in development
+try {
+  require('dotenv').config();
+} catch (error) {
+  console.log('dotenv not available, using system environment variables');
+}
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
