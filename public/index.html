@@ -75,7 +75,7 @@
         const data = Object.fromEntries(formData.entries());
 
         try {
-  const res = await axios.post('https://desireaccounting.com.au/server/api/appointment', data);
+  const res = await axios.post('https://appointment-v5lu.onrender.com/api/appointment', data);
   if (res.status === 200) {
     responseMsg.classList.remove('hidden');
     form.reset();
