@@ -50,7 +50,7 @@ app.post('/api/appointment', async (req, res) => {
   });
 
 const adminMailOptions = {
-    from: 'info@desireaccounting.com.au',
+    from: 'admin@mg.desireaccounting.com.au',
     to: 'info@desireaccounting.com.au', // replace with your receiving email
     subject: 'New Appointment Request',
     text: `
