@@ -41,7 +41,7 @@ app.post('/api/appointment', async (req, res) => {
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.eu.mailgun.org',
-    port: 587,
+    port: 2525,
     secure: false,
     auth: {
       user: process.env.SMTP_USER,
