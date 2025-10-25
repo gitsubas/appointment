@@ -66,7 +66,7 @@ const adminMailOptions = {
   };
 
   const clientMailOptions = {
-    from: 'info@desireaccounting.com.au',
+    from: 'Desire Accounting <no-reply@desireaccounting.com.au>',
     to: data.email,
     subject: 'Appointment Request Received',
     text: `Dear ${data.name},
